@@ -1,4 +1,4 @@
-# menuTitle : Mark 4: Bad
+# menuTitle : 04: Bad
 # shortCut  : command+control+shift+4
 """
   Mark currently-selected glyphs as "Bad,"

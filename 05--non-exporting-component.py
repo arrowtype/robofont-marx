@@ -1,4 +1,4 @@
-# menuTitle : Mark 5: Non-Exporting
+# menuTitle : 05: Non-Exporting
 # shortCut  : command+control+shift+5
 """
   Mark currently-selected glyphs as a "non-exporting component,"

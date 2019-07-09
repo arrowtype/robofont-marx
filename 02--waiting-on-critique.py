@@ -1,4 +1,4 @@
-# menuTitle : Mark 2: Needs Feedback
+# menuTitle : 02: Needs Feedback
 # shortCut  : command+control+shift+2
 """
   Mark currently-selected glyphs as "waiting on critique,"
