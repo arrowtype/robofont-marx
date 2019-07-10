@@ -1,4 +1,4 @@
-# menuTitle : 01: Worked On
+# menuTitle : 01: Worked On (iterate mark)
 # shortCut  : command+control+shift+1
 """
   Mark currently-selected glyphs as "worked on,"
