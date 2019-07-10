@@ -5,7 +5,7 @@
   so it's clear they should be fixed later.
 """
 
-from markLib.markGlyphs import markGlyphs, states
+from markLib.markGlyphs import markGlyphs, markSettings
 
 f = CurrentFont()
-markGlyphs(f, states["bad"])
+markGlyphs(f, markSettings["bad"])

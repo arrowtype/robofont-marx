@@ -5,9 +5,9 @@
   so it's clear that they need no known work.
 """
 
-from markLib.markGlyphs import markGlyphs, states
+from markLib.markGlyphs import markGlyphs, markSettings
 
 color = None
 
 f = CurrentFont()
-markGlyphs(f, states["finished"])
+markGlyphs(f, markSettings["finished"])

@@ -5,7 +5,7 @@
   so it's clear what a collaborate should critique.
 """
 
-from markLib.markGlyphs import markGlyphs, states
+from markLib.markGlyphs import markGlyphs, markSettings
 
 f = CurrentFont()
-markGlyphs(f, states["waitingForCritique"])
+markGlyphs(f, markSettings["waitingForCritique"])
