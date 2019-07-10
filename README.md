@@ -28,7 +28,6 @@ I recommend [setting up a "Hyper" key](https://brettterpstra.com/2017/06/15/a-hy
 ## To-do
 
 - [ ] Adjust `increment` colors in all WIP glyphs when one reaches a new maximum value
-- [ ] Add a `decrement` script for Work-in-Progress marks
 
 Maybe:
 - [ ] Make into an extension, with UI for simpler control and configuration
