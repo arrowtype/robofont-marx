@@ -3,7 +3,7 @@ newPage(W, H)
 
 a = (0, 0.25, 1, 0.2)
 b = (0, 0.4, 0.5, 0.8)
-steps = 20
+steps = 8
 
 
 def i(a, b, f):
