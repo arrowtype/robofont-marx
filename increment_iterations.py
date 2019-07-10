@@ -1,8 +1,9 @@
-# menuTitle : 01: Work in Progress (new edits) – Blue
-# shortCut  : command+control+shift+1
+# menuTitle : 01a: Work in Progress (new edits) - Blue
+# shortCut  : command+control+shift+.
 """
   Mark currently-selected glyphs as "worked on,"
-  so it's clear they have been edited.
+  so it's clear they have been edited. Increments "iterations" 
+  value by 1 and makes teal glyph mark slightly darker.
 """
 
 iterationMarkSettings = {
