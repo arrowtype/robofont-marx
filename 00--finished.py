@@ -1,4 +1,4 @@
-# menuTitle : 00: Finished (no mark)
+# menuTitle : 00: Finished – No Mark
 # shortCut  : command+control+shift+0
 """
   Mark currently-selected glyphs as "Finished,"

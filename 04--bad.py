@@ -1,4 +1,4 @@
-# menuTitle : 04: Needs Fixing
+# menuTitle : 04: Needs Fixing – Red
 # shortCut  : command+control+shift+4
 """
   Mark currently-selected glyphs as "Needs Fixing,"

@@ -1,4 +1,4 @@
-# menuTitle : 01: Worked On (iterate mark)
+# menuTitle : 01: Work in Progress (new edits) – Blue
 # shortCut  : command+control+shift+1
 """
   Mark currently-selected glyphs as "worked on,"
@@ -6,34 +6,27 @@
 """
 
 iterationMarkSettings = {
-    "firstIteration": (0, 1, 0.25, 0.1),
-    "midIteration": (0, 0.5, 0.125, 0.425),
-    "lastIteration": (0, 0.4, 0.3, 0.65),
+    "firstIteration": (0, 0.25, 1, 0.1),
+    "lastIteration": (0, 0.4, 0.5, 0.75),
     "maxIterations": 20,
 }
 
 start = iterationMarkSettings["firstIteration"]
-middle = iterationMarkSettings["midIteration"]
 end = iterationMarkSettings["lastIteration"]
 
 f = CurrentFont()
-
-
-def setUpFont(font):
-    if "com.arrowtype.maxIterations" in font.lib:
-        maxIterations = font.lib["com.arrowtype.maxIterations"]
-    else:
-        font.lib.update(
-            {"com.arrowtype.maxIterations": iterationMarkSettings["maxIterations"]})
-        maxIterations = font.lib["com.arrowtype.maxIterations"]
+f.lib.update(
+    {"com.arrowtype.maxIterations": iterationMarkSettings["maxIterations"]})
 
 
 def interp(a, b, f):
     interpVal = a+f*(b-a)
-    if interpVal < 1:
-        return a+f*(b-a)
-    else:
+    if interpVal <= 1 and interpVal >= 0:
+        return interpVal
+    elif interpVal > 1:
         return 1
+    else:
+        return 0
 
 
 def setIterationMarks(font):
@@ -46,18 +39,10 @@ def setIterationMarks(font):
 
 
 def updateGlyphMark(glyph, factor, iterations, maxIterations):
-    if factor < 0.5:
+    factor = iterations / maxIterations
 
-        # generate factor with halfway point
-        factor = iterations / (maxIterations / 2)
-
-        glyph.mark = (interp(start[0], middle[0], factor), interp(start[1], middle[1], factor), interp(
-            start[2], middle[2], factor), interp(start[3], middle[3], factor))
-
-    elif factor >= 0.5:
-        factor = (iterations - maxIterations/2) / (maxIterations/2)
-        glyph.mark = (interp(middle[0], end[0], factor), interp(middle[1], end[1], factor), interp(
-            middle[2], end[2], factor), interp(middle[3], end[3], factor))
+    glyph.mark = (interp(start[0], end[0], factor), interp(start[1], end[1], factor), interp(
+        start[2], end[2], factor), interp(start[3], end[3], factor))
 
 
 def markSelectedGlyphs(font, selection):
@@ -65,9 +50,11 @@ def markSelectedGlyphs(font, selection):
 
         glyph = f[glyphName]
 
+        glyph.lib.update({"com.arrowtype.glyphMarkStatus": "workInProgress"})
+
         maxIterations = font.lib["com.arrowtype.maxIterations"]
 
-        iterations = 1
+        iterations = 0
 
         if "com.arrowtype.numberOfIterations" not in glyph.lib:
             glyph.mark = iterationMarkSettings["firstIteration"]
@@ -90,9 +77,6 @@ def markSelectedGlyphs(font, selection):
 
             factor = iterations / maxIterations
 
-            glyph.lib.update(
-                {"com.arrowtype.numberOfIterations": iterations + 1})
-
             updateGlyphMark(glyph, factor, iterations, maxIterations)
 
         else:
@@ -111,8 +95,10 @@ def markSelectedGlyphs(font, selection):
 
             setIterationMarks(f)
 
-        print(f"/ {glyphName} iterations: {str(iterations)}")
+        glyph.lib.update(
+            {"com.arrowtype.numberOfIterations": iterations + 1})
+
+        print(f"/ {glyphName} iterations: {str(iterations + 1)}")
 
 
-setUpFont(f)
 markSelectedGlyphs(f, f.selection)

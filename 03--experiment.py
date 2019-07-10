@@ -1,4 +1,4 @@
-# menuTitle : 03: Experiment
+# menuTitle : 03: Experiment – Purple
 # shortCut  : command+control+shift+3
 """
   Mark currently-selected glyphs as "worked on,"
