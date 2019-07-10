@@ -8,24 +8,24 @@
 iterationMarkSettings = {
     "firstIteration": (0, 1, 0.25, 0.1),
     "midIteration": (0, 0.5, 0.125, 0.425),
-    "lastIteration": (0, 0.25, 0.075, 0.75),
+    "lastIteration": (0, 0.4, 0.3, 0.65),
     "maxIterations": 20,
 }
-
-f = CurrentFont()
-
-if "maxIterations" in f.lib:
-    maxIterations = f.lib["maxIterations"]
-else:
-    f.lib.update({"maxIterations": iterationMarkSettings["maxIterations"]})
-    maxIterations = f.lib["maxIterations"]
-
-print("maxIterations is: ", str(maxIterations))
-
 
 start = iterationMarkSettings["firstIteration"]
 middle = iterationMarkSettings["midIteration"]
 end = iterationMarkSettings["lastIteration"]
+
+f = CurrentFont()
+
+
+def setUpFont(font):
+    if "com.arrowtype.maxIterations" in font.lib:
+        maxIterations = font.lib["com.arrowtype.maxIterations"]
+    else:
+        font.lib.update(
+            {"com.arrowtype.maxIterations": iterationMarkSettings["maxIterations"]})
+        maxIterations = font.lib["com.arrowtype.maxIterations"]
 
 
 def interp(a, b, f):
@@ -36,7 +36,16 @@ def interp(a, b, f):
         return 1
 
 
-def updateGlyphMark(glyph, factor):
+def setIterationMarks(font):
+    for iterGlyph in font.lib["com.arrowtype.iteratedGlyphs"]:
+        iterations = font[iterGlyph].lib["com.arrowtype.numberOfIterations"]
+        maxIterations = font.lib["com.arrowtype.maxIterations"]
+        factor = iterations / maxIterations
+
+        updateGlyphMark(font[iterGlyph], factor, iterations, maxIterations)
+
+
+def updateGlyphMark(glyph, factor, iterations, maxIterations):
     if factor < 0.5:
 
         # generate factor with halfway point
@@ -51,55 +60,59 @@ def updateGlyphMark(glyph, factor):
             middle[2], end[2], factor), interp(middle[3], end[3], factor))
 
 
-for glyphName in f.selection:
+def markSelectedGlyphs(font, selection):
+    for glyphName in selection:
 
-    glyph = f[glyphName]
+        glyph = f[glyphName]
 
-    if "numberOfIterations" not in glyph.lib:
-        glyph.mark = iterationMarkSettings["firstIteration"]
+        maxIterations = font.lib["com.arrowtype.maxIterations"]
 
-        glyph.lib.update({"numberOfIterations": 1})
+        iterations = 1
 
-        if "iteratedGlyphs" not in f.lib:
-            f.lib.update({"iteratedGlyphs": [glyphName]})
+        if "com.arrowtype.numberOfIterations" not in glyph.lib:
+            glyph.mark = iterationMarkSettings["firstIteration"]
+
+            glyph.lib.update({"com.arrowtype.numberOfIterations": 1})
+
+            if "iteratedGlyphs" not in font.lib:
+                font.lib.update({"com.arrowtype.iteratedGlyphs": [glyphName]})
+            else:
+
+                iteratedGlyphsList = font.lib["com.arrowtype.iteratedGlyphs"]
+
+                iteratedGlyphsList.append(glyphName)
+
+                font.lib.update(
+                    {"com.arrowtype.iteratedGlyphs": iteratedGlyphsList})
+
+        elif glyph.lib["com.arrowtype.numberOfIterations"] < maxIterations:
+            iterations = glyph.lib["com.arrowtype.numberOfIterations"]
+
+            factor = iterations / maxIterations
+
+            glyph.lib.update(
+                {"com.arrowtype.numberOfIterations": iterations + 1})
+
+            updateGlyphMark(glyph, factor, iterations, maxIterations)
+
         else:
 
-            iteratedGlyphsList = f.lib["iteratedGlyphs"]
+            newMax = maxIterations + 1
 
-            iteratedGlyphsList.append(glyphName)
+            print("boosting max iterations to " + str(newMax))
 
-            f.lib.update({"iteratedGlyphs": iteratedGlyphsList})
+            font.lib.update({"com.arrowtype.maxIterations": newMax})
 
-    elif glyph.lib["numberOfIterations"] < maxIterations:
-        iterations = glyph.lib["numberOfIterations"]
-        print("iterations: " + str(iterations))
+            iterations = glyph.lib["com.arrowtype.numberOfIterations"]
 
-        factor = iterations / maxIterations
-
-        glyph.lib.update({"numberOfIterations": iterations + 1})
-
-        updateGlyphMark(glyph, factor)
-
-    else:
-
-        newMax = maxIterations + 1
-
-        print("boosting max iterations to " + str(newMax))
-
-        f.lib.update({"maxIterations": newMax})
-
-        iterations = glyph.lib["numberOfIterations"]
-        print("iterations: " + str(iterations))
-
-        factor = iterations / newMax
-
-        updateGlyphMark(glyph, factor)
-
-        # TODO: update relative marks of all WIP glyphs?
-
-        for iterGlyph in f.lib["iteratedGlyphs"]:
-
-            iterations = f[iterGlyph].lib["numberOfIterations"]
             factor = iterations / newMax
 
-            updateGlyphMark(f[iterGlyph], factor)
+            updateGlyphMark(glyph, factor, iterations, maxIterations)
+
+            setIterationMarks(f)
+
+        print(f"/ {glyphName} iterations: {str(iterations)}")
+
+
+setUpFont(f)
+markSelectedGlyphs(f, f.selection)
