@@ -1,10 +1,11 @@
-# menuTitle : 01b: Decrement Iterations - Blue
-# shortCut  : command+control+shift+,
+# menuTitle : Decrement Iterations - Lighter Teal
+# shortCut  : command+control+shift+-
 """
   Decrements "iterations" value by 1 and makes teal glyph mark slightly lighter.
 """
 
-from increment_iterations.py import updateGlyphMark, iterationMarkSettings
+from markLib.iterate import *
+
 f = CurrentFont()
 maxIterations = iterationMarkSettings["maxIterations"]
 
@@ -20,14 +21,16 @@ def decrementSelectedGlyphs(font, selection):
 
         if "com.arrowtype.numberOfIterations" in glyph.lib and glyph.lib["com.arrowtype.numberOfIterations"] > 0:
 
+            iterations = glyph.lib["com.arrowtype.numberOfIterations"]
+
             glyph.lib.update(
                 {"com.arrowtype.numberOfIterations": iterations - 1})
-
-            iterations = glyph.lib["com.arrowtype.numberOfIterations"]
 
             factor = iterations / maxIterations
 
             updateGlyphMark(glyph, factor, iterations, maxIterations)
+
+            reportIterations(glyph)
 
 
 decrementSelectedGlyphs(f, f.selection)

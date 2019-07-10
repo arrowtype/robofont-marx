@@ -1,33 +1,17 @@
-# menuTitle : 01a: Work in Progress (new edits) - Blue
-# shortCut  : command+control+shift+.
+# menuTitle : Increment Iterations - Darker Teal
+# shortCut  : command+control+shift+=
 """
   Mark currently-selected glyphs as "worked on,"
   so it's clear they have been edited. Increments "iterations" 
   value by 1 and makes teal glyph mark slightly darker.
 """
 
-iterationMarkSettings = {
-    "firstIteration": (0, 0.25, 1, 0.1),
-    "lastIteration": (0, 0.4, 0.5, 0.75),
-    "maxIterations": 20,
-}
+from markLib.iterate import *
 
-start = iterationMarkSettings["firstIteration"]
-end = iterationMarkSettings["lastIteration"]
 
 f = CurrentFont()
 f.lib.update(
     {"com.arrowtype.maxIterations": iterationMarkSettings["maxIterations"]})
-
-
-def interp(a, b, f):
-    interpVal = a+f*(b-a)
-    if interpVal <= 1 and interpVal >= 0:
-        return interpVal
-    elif interpVal > 1:
-        return 1
-    else:
-        return 0
 
 
 def setIterationMarks(font):
@@ -37,13 +21,6 @@ def setIterationMarks(font):
         factor = iterations / maxIterations
 
         updateGlyphMark(font[iterGlyph], factor, iterations, maxIterations)
-
-
-def updateGlyphMark(glyph, factor, iterations, maxIterations):
-    factor = iterations / maxIterations
-
-    glyph.mark = (interp(start[0], end[0], factor), interp(start[1], end[1], factor), interp(
-        start[2], end[2], factor), interp(start[3], end[3], factor))
 
 
 def markSelectedGlyphs(font, selection):
@@ -99,7 +76,7 @@ def markSelectedGlyphs(font, selection):
         glyph.lib.update(
             {"com.arrowtype.numberOfIterations": iterations + 1})
 
-        print(f"/ {glyphName} iterations: {str(iterations + 1)}")
+        reportIterations(glyph)
 
 
 markSelectedGlyphs(f, f.selection)
