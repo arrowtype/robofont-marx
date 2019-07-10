@@ -1,11 +1,11 @@
 <p align="center">
-    <img alt="typemedia 18" src="docs/readme-assets/marx-logo.png" width="60" />
+    <img alt="typemedia 18" src="docs/readme-assets/marx-logo.png" width="120" />
 </p>
 <h1 align="center">
   Marx: easily control glyph marks in RoboFont
 </h1>
 
-![](docs/readme-assets/marx-logo.png)
+![](docs/readme-assets/glyph-marx.png)
 
 This is an experimental set of scripts to allow easy control over glyph marks in RoboFont.
 
