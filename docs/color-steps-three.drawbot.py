@@ -2,15 +2,14 @@ W, H = 1000, 1000
 newPage(W,H)
 iterations = 30
 
-start = (0.25, 1, 1, 0.125)
-middle = (0, 0.5, 0.25, 0.65)
+start = (0.25, 1, 1, 0.5)
+middle = (0, 0.75, 0.35, 0.75)
 end = (0, 0, 0.25, 1)
-
-# factor = 0.15
 
 def interp(a,b,f):
     return a+f*(b-a)
 
+transform
 
 for step in range(0,iterations): 
     f = step / iterations
@@ -24,4 +23,5 @@ for step in range(0,iterations):
         f = (step - iterations/2) / (iterations/2)
         fill(interp(middle[0],end[0],f), interp(middle[1],end[1],f), interp(middle[2],end[2],f), interp(middle[3],end[3],f))
 
-    rect(W/iterations*step,0,W/iterations, H)
+    rect(0,H/iterations*(iterations-step-1),W, H/iterations)
+

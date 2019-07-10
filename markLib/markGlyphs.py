@@ -20,5 +20,5 @@ def markGlyphs(font, color):
     for g in font.selection:
         print(g)
         font[g].markColor = color
-        font[g].lib.update("com.arrowtype.glyphMarkStatus": state)
+        font[g].lib.update({"com.arrowtype.glyphMarkStatus": state})
     print("---\n")
