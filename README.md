@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="typemedia 18" src="docs/readme-assets/marx-logo.png" width="120" />
+    <img alt="typemedia 18" src="docs/readme-assets/logo.png" width="120" />
 </p>
 <h1 align="center">
   Marx: easily control glyph marks in RoboFont
