@@ -3,10 +3,6 @@
 '''
 
 markSettings = {
-    "firstIteration": (0, 1, 0.25, 0.1),        # 1
-    "midIteration": (0, 0.5, 0.125, 0.425),
-    "lastIteration": (0, 0.25, 0.375, 0.75),
-    "maxIterations": 20,
     "waitingForCritique": (0, 0, 1, 0.75),      # 2
     "experiment": (1, 0, 1, 0.75),              # 3
     "bad": (0.666, 0, 0.125, 0.75),             # 4

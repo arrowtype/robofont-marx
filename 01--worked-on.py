@@ -5,8 +5,8 @@
   so it's clear they have been edited.
 """
 
-markSettings = {
-    "firstIteration": (0, 1, 0.25, 0.1),        # 1
+iterationMarkSettings = {
+    "firstIteration": (0, 1, 0.25, 0.1),
     "midIteration": (0, 0.5, 0.125, 0.425),
     "lastIteration": (0, 0.25, 0.075, 0.75),
     "maxIterations": 20,
@@ -17,15 +17,15 @@ f = CurrentFont()
 if "maxIterations" in f.lib:
     maxIterations = f.lib["maxIterations"]
 else:
-    f.lib.update({"maxIterations": markSettings["maxIterations"]})
+    f.lib.update({"maxIterations": iterationMarkSettings["maxIterations"]})
     maxIterations = f.lib["maxIterations"]
 
 print("maxIterations is: ", str(maxIterations))
 
 
-start = markSettings["firstIteration"]
-middle = markSettings["midIteration"]
-end = markSettings["lastIteration"]
+start = iterationMarkSettings["firstIteration"]
+middle = iterationMarkSettings["midIteration"]
+end = iterationMarkSettings["lastIteration"]
 
 
 def interp(a, b, f):
@@ -38,25 +38,17 @@ def interp(a, b, f):
 
 def updateGlyphMark(glyph, factor):
     if factor < 0.5:
-        # increment iterations
-        print("less than halfway")
-        glyph.lib.update({"numberOfIterations": iterations + 1})
 
         # generate factor with halfway point
         factor = iterations / (maxIterations / 2)
 
         glyph.mark = (interp(start[0], middle[0], factor), interp(start[1], middle[1], factor), interp(
             start[2], middle[2], factor), interp(start[3], middle[3], factor))
-        print(glyph.mark)
 
     elif factor >= 0.5:
-        print("more than halfway")
-        glyph.lib.update({"numberOfIterations": iterations + 1})
-
         factor = (iterations - maxIterations/2) / (maxIterations/2)
         glyph.mark = (interp(middle[0], end[0], factor), interp(middle[1], end[1], factor), interp(
             middle[2], end[2], factor), interp(middle[3], end[3], factor))
-        print(glyph.mark)
 
 
 for glyphName in f.selection:
@@ -64,7 +56,7 @@ for glyphName in f.selection:
     glyph = f[glyphName]
 
     if "numberOfIterations" not in glyph.lib:
-        glyph.mark = markSettings["firstIteration"]
+        glyph.mark = iterationMarkSettings["firstIteration"]
 
         glyph.lib.update({"numberOfIterations": 1})
 
@@ -83,6 +75,8 @@ for glyphName in f.selection:
         print("iterations: " + str(iterations))
 
         factor = iterations / maxIterations
+
+        glyph.lib.update({"numberOfIterations": iterations + 1})
 
         updateGlyphMark(glyph, factor)
 
