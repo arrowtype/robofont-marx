@@ -17,13 +17,14 @@ I recommend [setting up a "Hyper" key](https://brettterpstra.com/2017/06/15/a-hy
 
 | **State**                           | **Color**                          | Shortcut          |
 | ----------------------------------- | ---------------------------------- | ----------------- |
+| Iteration Increment                 | Teal, darker for more iterations   | `cmd+cntr+shft+=` |
+| Iteration Decrement                 | Teal, lighter for fewer iterations | `cmd+cntr+shft+-` |
 | Finished / Good                     | (none)                             | `cmd+cntr+shft+0` |
-| Work in Progress                    | Teal (increment for each revision) | `cmd+cntr+shft+1` |
+| Needs Fixing                        | Red                                | `cmd+cntr+shft+1` |
 | Waiting for Critique                | Yellow                             | `cmd+cntr+shft+2` |
-| Experimental?                       | Purple                             | `cmd+cntr+shft+3` |
-| Needs Fixing                        | Red                                | `cmd+cntr+shft+4` |
-| “Non-exporting” (e.g. `.arrowhead`) | Gray                               | `cmd+cntr+shft+5` |
-| Built from Components               | Blue                               | (none)            |
+| Experimental                        | Purple                             | `cmd+cntr+shft+3` |
+| “Non-exporting” (e.g. `.arrowhead`) | Gray                               | `cmd+cntr+shft+4` |
+| Built from Components               | Blue                               | `cmd+cntr+shft+5` |
 
 ## To-do
 
