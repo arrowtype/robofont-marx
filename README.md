@@ -14,7 +14,7 @@ Use hotkey shortcuts to quickly assign a color mark to selected glyphs, to bette
 ## Installation
 
 1. Download or clone this git repo into a general folder for type/code repos (for me, this is `/Users/stephennixon/type-repos`).
-2. Navigate to your RoboFont scripts folder in a terminal. Use `mkdir 01-marx && cd 01-marx` to make and navigate to a folder for this tool.
+2. Navigate to your RoboFont scripts folder in a terminal. Then, use `mkdir 01-marx && cd 01-marx` to make and navigate to a folder for this tool.
 3. Use `ln -s <general_repos_path>/*.py .` to symlink all the python files into the current directory. For me, this looks like:
 
 ```
