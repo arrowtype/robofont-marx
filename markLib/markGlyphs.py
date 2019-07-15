@@ -5,7 +5,7 @@
 markSettings = {
     "waitingForCritique": (1, 1, 0, 0.75),      # 2
     "experiment": (0.5, 0, 1, 0.75),              # 3
-    "needsFixing": (0.666, 0, 0, 0.75),     # 4
+    "needsFixing": (1.0, 0.45, 0.45, 0.75),     # 4
     "nonExportingComponent": (0, 0, 0, 0.5),   # 5
     "finished": None,                           # 0
     "fromComponents": (0, 0.25, 1, 1)
