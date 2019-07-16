@@ -29,8 +29,8 @@ Select one or more glyphs in the main Font view, and cue one of the following sc
 | Needs Fixing                        | Red                                | `cmd+cntr+shft+1` |
 | Waiting for Critique                | Yellow                             | `cmd+cntr+shft+2` |
 | Experimental                        | Purple                             | `cmd+cntr+shft+3` |
-| “Non-exporting” (e.g. `.arrowhead`) | Gray                               | `cmd+cntr+shft+4` |
-| Built from Components               | Blue                               | `cmd+cntr+shft+5` |
+| “Non-exporting” (e.g. `.arrowhead`) | Dark Gray                          | `cmd+cntr+shft+4` |
+| Built from Components               | Gray                               | `cmd+cntr+shft+5` |
 | Finished / Good                     | (none)                             | `cmd+cntr+shft+0` |
 | Iteration Increment                 | Teal, darker for more iterations   | `cmd+cntr+shft+=` |
 | Iteration Decrement                 | Teal, lighter for fewer iterations | `cmd+cntr+shft+-` |
