@@ -26,6 +26,8 @@ Note: currently, there are folders for `notes` and `markLib` in the script menu.
 
 If you haven't already custom-configured your RoboFont mark settings (or if you are okay to override previous customizations), you can use `Override & update global RoboFont mark settings` to override the mark settings. This will make it easy to mark glyphs with the correct colors & mark names, directly in the RoboFont UI.
 
+![](notes/readme-assets/rf-mark-menu.png)
+
 ### Mark glyphs
 
 Select one or more glyphs in the main Font view, and cue one of the following scripts:
@@ -55,6 +57,7 @@ Example usecase: you have a bunch of glyphs marked in orange, but you want to ma
 ## To-do
 
 - [ ] Adjust `increment` colors in all WIP glyphs when one reaches a new maximum value
+- [ ] Make it simpler to set mark while in glyph-edit view
 
 Maybe:
 - [ ] Make into an extension, with UI for simpler control and configuration
