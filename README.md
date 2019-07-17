@@ -22,28 +22,28 @@ Note: currently, there are folders for `notes` and `markLib` in the script menu.
 
 ## Usage
 
-### Update RoboFont mark settings
-
-If you haven't already custom-configured your RoboFont mark settings (or if you are okay to override previous customizations), you can use `Override & update global RoboFont mark settings` to override the mark settings. This will make it easy to mark glyphs with the correct colors & mark names, directly in the RoboFont UI.
-
-![](notes/readme-assets/rf-mark-menu.png)
-
 ### Mark glyphs
 
 Select one or more glyphs in the main Font view, and cue one of the following scripts:
 
 | **State**                           | **Color**                          | Shortcut          |
 | ----------------------------------- | ---------------------------------- | ----------------- |
-| Needs Fixing                        | Red                                | `cmd+cntr+shft+1` |
-| Waiting for Critique                | Yellow                             | `cmd+cntr+shft+2` |
-| Experimental                        | Purple                             | `cmd+cntr+shft+3` |
-| “Non-exporting” (e.g. `.arrowhead`) | Dark Gray                          | `cmd+cntr+shft+4` |
-| Built from Components               | Light Gray                         | `cmd+cntr+shft+5` |
-| Finished / Good                     | White                              | `cmd+cntr+shft+0` |
-| Iteration Increment                 | Teal, greener for more iterations  | `cmd+cntr+shft+=` |
-| Iteration Decrement                 | Teal, lighter for fewer iterations | `cmd+cntr+shft+-` |
+| Needs Fixing                        | Red                                | `cmd cntr shft 1` |
+| Waiting for Critique                | Yellow                             | `cmd cntr shft 2` |
+| Experimental                        | Purple                             | `cmd cntr shft 3` |
+| “Non-exporting” (e.g. `.arrowhead`) | Dark Gray                          | `cmd cntr shft 4` |
+| Built from Components               | Light Gray                         | `cmd cntr shft 5` |
+| Finished / Good                     | White                              | `cmd cntr shft 0` |
+| Iteration Increment                 | Teal, greener for more iterations  | `cmd cntr shft =` |
+| Iteration Decrement                 | Teal, lighter for fewer iterations | `cmd cntr shft -` |
 
 I recommend [setting up a "Hyper" key](https://brettterpstra.com/2017/06/15/a-hyper-key-with-karabiner-elements-full-instructions/), but leaving out the `option` key, for optimal hotkey usage in RoboFont. The default shortcuts in Marx assume you have done this.
+
+### Update RoboFont mark settings
+
+If you haven't already custom-configured your RoboFont mark settings (or if you are okay to override previous customizations), you can use `Override & update global RoboFont mark settings` to override the mark settings. This will make it easy to mark glyphs with the correct colors & mark names, directly in the RoboFont UI.
+
+![](notes/readme-assets/rf-mark-menu.png)
 
 ### Select all glyphs with a particular mark
 
