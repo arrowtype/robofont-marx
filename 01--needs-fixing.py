@@ -8,4 +8,4 @@
 from markLib.markGlyphs import markGlyphs, markSettings
 
 f = CurrentFont()
-markGlyphs(f, markSettings["needsFixing"])
+markGlyphs(f, markSettings["fix"])

@@ -3,9 +3,9 @@
 '''
 
 iterationMarkSettings = {
-    "firstIteration": (0, 0.25, 1, 0.1),
-    "lastIteration": (0, 0.4, 0.5, 0.75),
-    "maxIterations": 20,
+    "firstIteration": (0.25, 0.5, 1, 0.25),
+    "lastIteration": (0, 1, 0.5, 1),
+    "maxIterations": 10,
 }
 
 start = iterationMarkSettings["firstIteration"]

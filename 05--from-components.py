@@ -1,4 +1,4 @@
-# menuTitle : 05: Built from Components - Blue
+# menuTitle : 05: Built from Components - Light Gray
 # shortCut  : command+control+shift+5
 """
   Mark currently-selected glyphs as a "non-exporting component,"
@@ -8,4 +8,4 @@
 from markLib.markGlyphs import markGlyphs, markSettings
 
 f = CurrentFont()
-markGlyphs(f, markSettings["fromComponents"])
+markGlyphs(f, markSettings["composed"])

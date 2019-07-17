@@ -8,4 +8,4 @@
 from markLib.markGlyphs import markGlyphs, markSettings
 
 f = CurrentFont()
-markGlyphs(f, markSettings["waitingForCritique"])
+markGlyphs(f, markSettings["check"])
