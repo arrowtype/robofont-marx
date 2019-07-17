@@ -1,6 +1,8 @@
+# menuTitle : Override & update global RoboFont mark settings
+
 import mojo.UI as mui
 
-from markLib.markGlyphs import markSettings
+from markLib.settings import markSettings
 
 
 def removeExistingTags():

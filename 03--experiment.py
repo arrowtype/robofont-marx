@@ -5,7 +5,8 @@
   so it's clear they have been edited.
 """
 
-from markLib.markGlyphs import markGlyphs, markSettings
+from markLib.markGlyphs import markGlyphs
+from markLib.settings import markSettings
 
 f = CurrentFont()
 markGlyphs(f, markSettings["experiment"])

@@ -5,7 +5,8 @@
   so it's clear that it shouldn't be directly included in an output font.
 """
 
-from markLib.markGlyphs import markGlyphs, markSettings
+from markLib.markGlyphs import markGlyphs
+from markLib.settings import markSettings
 
 f = CurrentFont()
 markGlyphs(f, markSettings["nonexporting"])

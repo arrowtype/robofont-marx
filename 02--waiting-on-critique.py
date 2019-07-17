@@ -5,7 +5,8 @@
   so it's clear what a collaborate should critique.
 """
 
-from markLib.markGlyphs import markGlyphs, markSettings
+from markLib.markGlyphs import markGlyphs
+from markLib.settings import markSettings
 
 f = CurrentFont()
 markGlyphs(f, markSettings["check"])

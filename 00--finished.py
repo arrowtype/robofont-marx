@@ -5,7 +5,8 @@
   so it's clear that they need no known work.
 """
 
-from markLib.markGlyphs import markGlyphs, markSettings
+from markLib.markGlyphs import markGlyphs
+from markLib.settings import markSettings
 
 color = None
 

@@ -1,4 +1,4 @@
-# menuTitle : Select all glyphs with selected mark
+# menuTitle : Select all glyphs with selected marks
 # shortCut  : command+control+shift+F
 """
   Select glyphs of one or more mark colors, then 
@@ -20,4 +20,3 @@ for g in f:
     if g.mark in markColors:
         print(g.name)
         g.selected = True
-    
