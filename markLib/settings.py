@@ -9,7 +9,7 @@ markSettings = {
     "experiment": (0.65, 0, 1, 1),
     "nonexporting": (0.5, 0.5, 0.5, 1),
     "composed": (0.75, 0.75, 0.75, 1),
-    "finished": (1, 1, 1, 1),
+    "finished": (1, 1, 1, 0),
 }
 
 iterationMarkSettings = {
